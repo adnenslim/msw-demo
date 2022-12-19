@@ -5,6 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+if (process.env.REACT_APP_MSW === 'OFFLINE') {
+  const { worker } = require('./mocks/browser');
+  worker.start();
+}
+
 root.render(
   <React.StrictMode>
     <App />
